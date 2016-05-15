@@ -103,15 +103,15 @@ namespace Calculator
             // clear text field
             txtOutput.Text = "";
 
-            //string inputString = txtInput.Text;
-            //// check for letters in input
-            //for (int i = 0; i < inputString.Length; i++)
-            //{
-            //    if (inputString[i] < '(' || inputString[i] > '9')
-            //    {
-            //        txtOutput.Text = "Invalid input.";
-            //    }
-            //}
+            string inputString = txtInput.Text;
+            // check for letters in input
+            for (int i = 0; i < inputString.Length; i++)
+            {
+                if (inputString[i] < '(' || inputString[i] > '9')
+                {
+                    txtOutput.Text = "Invalid input.";
+                }
+            }
 
             //// keep order of operations in mind
 
