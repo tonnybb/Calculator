@@ -95,6 +95,46 @@ namespace Calculator
         private void btnClear_Click(object sender, EventArgs e)
         {
             txtInput.Text = "";
+            txtOutput.Text = "";
+        }
+
+        private void btnEquals_Click(object sender, EventArgs e)
+        {
+            // clear text field
+            txtOutput.Text = "";
+
+            //string inputString = txtInput.Text;
+            //// check for letters in input
+            //for (int i = 0; i < inputString.Length; i++)
+            //{
+            //    if (inputString[i] < '(' || inputString[i] > '9')
+            //    {
+            //        txtOutput.Text = "Invalid input.";
+            //    }
+            //}
+
+            //// keep order of operations in mind
+
+            //// search for * or / and do those first
+
+
+            //for (int i = 0; i < inputString.Length; i++)
+            //{
+            //    if (inputString[i] == '/' || inputString[i] == '*')
+            //    {
+            //        // found / or *
+
+            //        // get both operands
+
+            //        // get left operand
+
+
+            //    }
+            //}
+
+            //// check for division by 0
+
+
         }
     }
 }

@@ -189,12 +189,13 @@
             // btnEquals
             // 
             this.btnEquals.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEquals.Location = new System.Drawing.Point(266, 223);
+            this.btnEquals.Location = new System.Drawing.Point(271, 223);
             this.btnEquals.Name = "btnEquals";
             this.btnEquals.Size = new System.Drawing.Size(50, 106);
             this.btnEquals.TabIndex = 13;
             this.btnEquals.Text = "=";
             this.btnEquals.UseVisualStyleBackColor = true;
+            this.btnEquals.Click += new System.EventHandler(this.btnEquals_Click);
             // 
             // btnPlus
             // 
@@ -243,7 +244,7 @@
             // btnClear
             // 
             this.btnClear.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClear.Location = new System.Drawing.Point(265, 111);
+            this.btnClear.Location = new System.Drawing.Point(271, 111);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(50, 106);
             this.btnClear.TabIndex = 18;
