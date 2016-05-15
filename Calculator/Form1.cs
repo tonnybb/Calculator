@@ -102,7 +102,7 @@ namespace Calculator
         {
             for (int i = 0; i < input.Length; i++)
             {
-                if (input[i] < '(' || input[i] > '9')
+                if ( (input[i] < '(' || input[i] > '9') && input[i] != ' ' )
                 {
                     return false;
                 }
