@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -122,17 +123,26 @@ namespace Calculator
 
             if (hasValidInput)
             {
-                //// keep order of operations in mind
+                // Split array based on whitespace
+                ArrayList splitArray = new ArrayList( inputString.Split(' ') );
 
-                //// search for * or / and do those first
-
-
-                for (int i = 0; i < inputString.Length; i++)
+                //search for * or / and do those first
+                double result = 0.0;
+                for (int i = 0; i < splitArray.Count; i++)
                 {
-                    if (inputString[i] == '/' || inputString[i] == '*')
+                    if (splitArray[i].Equals("/") || inputString[i].Equals("*") )
                     {
-                        // find left operand
                         int divideOrMultiplyFoundAt = i;
+
+                        if (splitArray[i].Equals("/"))
+                        {
+                            result += inputString[i - 1] / inputString[i + 1];
+                        }
+                        else if (inputString[i].Equals("*"))
+                        {
+                            result += inputString[i - 1] * inputString[i + 1];
+                        }
+
 
                         // found / or *
 
