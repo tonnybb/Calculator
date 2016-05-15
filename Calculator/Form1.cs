@@ -98,6 +98,19 @@ namespace Calculator
             txtOutput.Text = "";
         }
 
+        private Boolean isValidInput(string input)
+        {
+            for (int i = 0; i < input.Length; i++)
+            {
+                if (input[i] < '(' || input[i] > '9')
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
         private void btnEquals_Click(object sender, EventArgs e)
         {
             // clear text field
@@ -105,34 +118,37 @@ namespace Calculator
 
             string inputString = txtInput.Text;
             // check for letters in input
-            for (int i = 0; i < inputString.Length; i++)
+            Boolean hasValidInput = isValidInput(inputString);
+
+            if (hasValidInput)
             {
-                if (inputString[i] < '(' || inputString[i] > '9')
+                //// keep order of operations in mind
+
+                //// search for * or / and do those first
+
+
+                for (int i = 0; i < inputString.Length; i++)
                 {
-                    txtOutput.Text = "Invalid input.";
+                    if (inputString[i] == '/' || inputString[i] == '*')
+                    {
+                        // found / or *
+
+                        // get both operands
+
+                        // get left operand
+
+
+                    }
                 }
+
+                // check for division by 0
+            }
+            else
+            {
+                txtOutput.Text = "Invalid input";
             }
 
-            //// keep order of operations in mind
 
-            //// search for * or / and do those first
-
-
-            //for (int i = 0; i < inputString.Length; i++)
-            //{
-            //    if (inputString[i] == '/' || inputString[i] == '*')
-            //    {
-            //        // found / or *
-
-            //        // get both operands
-
-            //        // get left operand
-
-
-            //    }
-            //}
-
-            //// check for division by 0
 
 
         }
