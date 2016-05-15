@@ -98,7 +98,7 @@ namespace Calculator
             txtOutput.Text = "";
         }
 
-        private Boolean isValidInput(string input)
+        private bool isValidInput(string input)
         {
             for (int i = 0; i < input.Length; i++)
             {
@@ -118,7 +118,7 @@ namespace Calculator
 
             string inputString = txtInput.Text;
             // check for letters in input
-            Boolean hasValidInput = isValidInput(inputString);
+            bool hasValidInput = isValidInput(inputString);
 
             if (hasValidInput)
             {
@@ -131,6 +131,9 @@ namespace Calculator
                 {
                     if (inputString[i] == '/' || inputString[i] == '*')
                     {
+                        // find left operand
+                        int divideOrMultiplyFoundAt = i;
+
                         // found / or *
 
                         // get both operands
