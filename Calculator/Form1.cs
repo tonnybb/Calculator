@@ -114,6 +114,8 @@ namespace Calculator
 
         private void btnEquals_Click(object sender, EventArgs e)
         {
+            double result = 0.0;
+
             // clear text field
             txtOutput.Text = "";
 
@@ -132,7 +134,7 @@ namespace Calculator
                 List<string> splitArray = new List<string>(inputString.Split(' '));
 
                 //search for * or / and do those first
-                double result = 0.0;
+                
                 for (int i = 0; i < splitArray.Count; i++)
                 {
                     if (splitArray[i].Equals("/") || inputString[i].Equals("*") )
@@ -142,10 +144,8 @@ namespace Calculator
                         double leftOperand = Double.Parse(leftOperandString);
 
                         // convert right operand to number
-                        string rightOperandString = splitArray[i + 1].ToString();
+                        string rightOperandString = splitArray[i + 1];
                         double rightOperand = Double.Parse(rightOperandString);
-
-                        int divideOrMultiplyFoundAt = i;
 
                         if (splitArray[i].Equals("/"))
                         {
@@ -155,8 +155,18 @@ namespace Calculator
                         {
                             result += leftOperand * rightOperand;
                         }
+
+                        // remove operands that have already been calculated
+                        splitArray.RemoveRange( (i-1), 3);
+
+                        // add result back into splitArray
+                        splitArray.Insert( (i-1), result.ToString());
+
+                        // reset 'i' back to beginning of array
+                        i = -1;
                     }
                 }
+
                 txtOutput.Text = result.ToString();
 
                 // check for division by 0
