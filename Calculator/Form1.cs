@@ -137,23 +137,23 @@ namespace Calculator
                 {
                     if (splitArray[i].Equals("/") || inputString[i].Equals("*") )
                     {
+                        // convert left operand to number
+                        string leftOperandString = splitArray[i - 1];
+                        double leftOperand = Double.Parse(leftOperandString);
+
+                        // convert right operand to number
+                        string rightOperandString = splitArray[i + 1].ToString();
+                        double rightOperand = Double.Parse(rightOperandString);
+
                         int divideOrMultiplyFoundAt = i;
 
                         if (splitArray[i].Equals("/"))
                         {
-                            // convert left operand to number
-                            string leftOperandString = splitArray[i - 1];
-                            double leftOperand = Double.Parse(leftOperandString);
-
-                            // convert right operand to number
-                            string rightOperandString = splitArray[i + 1].ToString();
-                            double rightOperand = Double.Parse(rightOperandString);
-
                             result += leftOperand / rightOperand;
                         }
                         else if (inputString[i].Equals("*"))
                         {
-                            result += inputString[i - 1] * inputString[i + 1];
+                            result += leftOperand * rightOperand;
                         }
                     }
                 }
