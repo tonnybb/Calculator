@@ -129,7 +129,7 @@ namespace Calculator
             if (hasValidInput)
             {
                 // Split array based on whitespace
-                ArrayList splitArray = new ArrayList( inputString.Split(' ') );
+                List<string> splitArray = new List<string>(inputString.Split(' '));
 
                 //search for * or / and do those first
                 double result = 0.0;
@@ -141,23 +141,23 @@ namespace Calculator
 
                         if (splitArray[i].Equals("/"))
                         {
-                            result += inputString[i - 1] / inputString[i + 1];
+                            // convert left operand to number
+                            string leftOperandString = splitArray[i - 1];
+                            double leftOperand = Double.Parse(leftOperandString);
+
+                            // convert right operand to number
+                            string rightOperandString = splitArray[i + 1].ToString();
+                            double rightOperand = Double.Parse(rightOperandString);
+
+                            result += leftOperand / rightOperand;
                         }
                         else if (inputString[i].Equals("*"))
                         {
                             result += inputString[i - 1] * inputString[i + 1];
                         }
-
-
-                        // found / or *
-
-                        // get both operands
-
-                        // get left operand
-
-
                     }
                 }
+                txtOutput.Text = result.ToString();
 
                 // check for division by 0
             }
