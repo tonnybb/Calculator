@@ -103,7 +103,22 @@ namespace Calculator
         {
             for (int i = 0; i < input.Length; i++)
             {
-                if ( (input[i] < '(' || input[i] > '9') && input[i] != ' ' )
+                if ((input[i] < '(' || input[i] > '9') && input[i] != ' ')
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        private bool hasNoDivisionByZero(List<string> splitArray)
+        {
+            for (int i = 0; i < (splitArray.Count - 1); i++)
+            {
+                string stringToTest = splitArray[i] + splitArray[i + 1];
+
+                if (stringToTest.Equals("/0"))
                 {
                     return false;
                 }
@@ -128,16 +143,17 @@ namespace Calculator
             if (inputString[1] == '/' || inputString[1] == '*' || inputString[1] == '+')
                 inputString = inputString.Substring(3);
 
-            if (hasValidInput)
-            {
-                // Split array based on whitespace
-                List<string> splitArray = new List<string>(inputString.Split(' '));
+            // Split array based on whitespace
+            List<string> splitArray = new List<string>(inputString.Split(' '));
 
-                //search for * or / and do those first
-                
+            // check for division by zero
+            bool nodivisionByZero = hasNoDivisionByZero(splitArray);
+
+            if (nodivisionByZero)
+            {
                 for (int i = 0; i < splitArray.Count; i++)
                 {
-                    if (splitArray[i].Equals("/") || inputString[i].Equals("*") )
+                    if (splitArray[i].Equals("/") || inputString[i].Equals("*"))
                     {
                         // convert left operand to number
                         string leftOperandString = splitArray[i - 1];
@@ -157,10 +173,10 @@ namespace Calculator
                         }
 
                         // remove operands that have already been calculated
-                        splitArray.RemoveRange( (i-1), 3);
+                        splitArray.RemoveRange((i - 1), 3);
 
                         // add result back into splitArray
-                        splitArray.Insert( (i-1), result.ToString());
+                        splitArray.Insert((i - 1), result.ToString());
 
                         // reset 'i' back to beginning of array
                         i = -1;
@@ -173,7 +189,7 @@ namespace Calculator
             }
             else
             {
-                txtOutput.Text = "Invalid input";
+                txtOutput.Text = "Cannot perform division by 0.";
             }
 
 
