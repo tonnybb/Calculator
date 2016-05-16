@@ -54,6 +54,7 @@
             this.txtInput.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtInput.Location = new System.Drawing.Point(14, 11);
             this.txtInput.Name = "txtInput";
+            this.txtInput.ReadOnly = true;
             this.txtInput.Size = new System.Drawing.Size(302, 27);
             this.txtInput.TabIndex = 0;
             // 
@@ -62,6 +63,7 @@
             this.txtOutput.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtOutput.Location = new System.Drawing.Point(14, 57);
             this.txtOutput.Name = "txtOutput";
+            this.txtOutput.ReadOnly = true;
             this.txtOutput.Size = new System.Drawing.Size(302, 27);
             this.txtOutput.TabIndex = 1;
             // 
@@ -284,8 +286,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox txtInput;
         private System.Windows.Forms.TextBox txtOutput;
         public System.Windows.Forms.Button btn7;
         public System.Windows.Forms.Button btn8;
@@ -304,6 +304,7 @@
         public System.Windows.Forms.Button btnDivide;
         public System.Windows.Forms.Button btnMultiply;
         public System.Windows.Forms.Button btnClear;
+        public System.Windows.Forms.TextBox txtInput;
     }
 }
 
