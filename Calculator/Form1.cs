@@ -153,7 +153,7 @@ namespace Calculator
             {
                 for (int i = 0; i < splitArray.Count; i++)
                 {
-                    if (splitArray[i].Equals("/") || inputString[i].Equals("*"))
+                    if (splitArray[i].Equals("/") || splitArray[i].Equals("*"))
                     {
                         // convert left operand to number
                         string leftOperandString = splitArray[i - 1];
@@ -167,7 +167,7 @@ namespace Calculator
                         {
                             result = leftOperand / rightOperand;
                         }
-                        else if (inputString[i].Equals("*"))
+                        else if (splitArray[i].Equals("*"))
                         {
                             result = leftOperand * rightOperand;
                         }
@@ -186,7 +186,7 @@ namespace Calculator
                 for (int i = 0; i < splitArray.Count; i++)
                 {
 
-                    if (splitArray[i].Equals("+") || inputString[i].Equals("-"))
+                    if (splitArray[i].Equals("+") || splitArray[i].Equals("-"))
                     {
                         // convert left operand to number
                         string leftOperandString = splitArray[i - 1];
@@ -200,7 +200,7 @@ namespace Calculator
                         {
                             result = leftOperand + rightOperand;
                         }
-                        else if (inputString[i].Equals("-"))
+                        else if (splitArray[i].Equals("-"))
                         {
                             result = leftOperand - rightOperand;
                         }
