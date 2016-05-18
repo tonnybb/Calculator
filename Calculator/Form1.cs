@@ -225,10 +225,6 @@ namespace Calculator
             {
                 txtOutput.Text = "Cannot perform division by 0.";
             }
-
-
-
-
         }
     }
 }

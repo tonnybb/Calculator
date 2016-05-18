@@ -51,21 +51,25 @@
             // 
             // txtInput
             // 
+            this.txtInput.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtInput.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtInput.Location = new System.Drawing.Point(14, 11);
             this.txtInput.Name = "txtInput";
             this.txtInput.ReadOnly = true;
             this.txtInput.Size = new System.Drawing.Size(302, 27);
             this.txtInput.TabIndex = 0;
+            this.txtInput.WordWrap = false;
             // 
             // txtOutput
             // 
+            this.txtOutput.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtOutput.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtOutput.Location = new System.Drawing.Point(14, 57);
             this.txtOutput.Name = "txtOutput";
             this.txtOutput.ReadOnly = true;
             this.txtOutput.Size = new System.Drawing.Size(302, 27);
             this.txtOutput.TabIndex = 1;
+            this.txtOutput.WordWrap = false;
             // 
             // btn7
             // 
