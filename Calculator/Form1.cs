@@ -147,9 +147,9 @@ namespace Calculator
             List<string> splitArray = new List<string>(inputString.Split(' '));
 
             // check for division by zero
-            bool nodivisionByZero = hasNoDivisionByZero(splitArray);
+            bool noDivisionByZero = hasNoDivisionByZero(splitArray);
 
-            if (nodivisionByZero)
+            if (noDivisionByZero)
             {
                 for (int i = 0; i < splitArray.Count; i++)
                 {
@@ -165,11 +165,11 @@ namespace Calculator
 
                         if (splitArray[i].Equals("/"))
                         {
-                            result += leftOperand / rightOperand;
+                            result = leftOperand / rightOperand;
                         }
                         else if (inputString[i].Equals("*"))
                         {
-                            result += leftOperand * rightOperand;
+                            result = leftOperand * rightOperand;
                         }
 
                         // remove operands that have already been calculated
@@ -181,6 +181,40 @@ namespace Calculator
                         // reset 'i' back to beginning of array
                         i = -1;
                     }
+                }
+
+                for (int i = 0; i < splitArray.Count; i++)
+                {
+
+                    if (splitArray[i].Equals("+") || inputString[i].Equals("-"))
+                    {
+                        // convert left operand to number
+                        string leftOperandString = splitArray[i - 1];
+                        double leftOperand = Double.Parse(leftOperandString);
+
+                        // convert right operand to number
+                        string rightOperandString = splitArray[i + 1];
+                        double rightOperand = Double.Parse(rightOperandString);
+
+                        if (splitArray[i].Equals("+"))
+                        {
+                            result = leftOperand + rightOperand;
+                        }
+                        else if (inputString[i].Equals("-"))
+                        {
+                            result = leftOperand - rightOperand;
+                        }
+
+                        // remove operands that have already been calculated
+                        splitArray.RemoveRange((i - 1), 3);
+
+                        // add result back into splitArray
+                        splitArray.Insert((i - 1), result.ToString());
+
+                        // reset 'i' back to beginning of array
+                        i = -1;
+                    }
+
                 }
 
                 txtOutput.Text = result.ToString();
