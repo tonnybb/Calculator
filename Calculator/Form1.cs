@@ -127,6 +127,31 @@ namespace Calculator
             return true;
         }
 
+        private void hasValidNumberOfParens(List<string> splitArray) 
+        {
+            int leftParens = 0;
+            int rightParens = 0;
+
+            for (int i = 0; i < splitArray.Count; i++)
+            {
+                if (splitArray[i].Equals("("))
+                {
+                    leftParens++;
+                }
+
+                if (splitArray[i].Equals(")"))
+                {
+                    rightParens++;
+                }
+            }
+
+            if (leftParens != rightParens)
+            {
+                throw new InvalidNumberOfParensException("Left and right parenthesis must match.");
+            }
+
+        }
+
         private void btnEquals_Click(object sender, EventArgs e)
         {
             double result = 0.0;
@@ -156,11 +181,9 @@ namespace Calculator
                     if (splitArray[i].Equals("/") || splitArray[i].Equals("*"))
                     {
                         // convert left operand to number
-                        //string leftOperandString = splitArray[i - 1];
                         double leftOperand = Double.Parse(splitArray[i - 1]);
 
                         // convert right operand to number
-                        //string rightOperandString = splitArray[i + 1];
                         double rightOperand = Double.Parse(splitArray[i + 1]);
 
                         if (splitArray[i].Equals("/"))
@@ -189,11 +212,9 @@ namespace Calculator
                     if (splitArray[i].Equals("+") || splitArray[i].Equals("-"))
                     {
                         // convert left operand to number
-                        //string leftOperandString = splitArray[i - 1];
                         double leftOperand = Double.Parse(splitArray[i - 1]);
 
                         // convert right operand to number
-                        //string rightOperandString = splitArray[i + 1];
                         double rightOperand = Double.Parse(splitArray[i + 1]);
 
                         if (splitArray[i].Equals("+"))
