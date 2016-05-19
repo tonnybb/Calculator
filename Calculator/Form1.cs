@@ -243,9 +243,6 @@ namespace Calculator
 
             string inputString = txtInput.Text;
 
-            // check for letters in input
-            bool hasValidInput = isValidInput(inputString);
-
             // remove extraneous signs from beginnning of string
             if (inputString[1] == '/' || inputString[1] == '*' || inputString[1] == '+')
                 inputString = inputString.Substring(3);
