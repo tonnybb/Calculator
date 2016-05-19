@@ -47,6 +47,8 @@
             this.btnDivide = new System.Windows.Forms.Button();
             this.btnMultiply = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
+            this.btnLeftParens = new System.Windows.Forms.Button();
+            this.btnRightParens = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtInput
@@ -258,11 +260,35 @@
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
+            // btnLeftParens
+            // 
+            this.btnLeftParens.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLeftParens.Location = new System.Drawing.Point(144, 335);
+            this.btnLeftParens.Name = "btnLeftParens";
+            this.btnLeftParens.Size = new System.Drawing.Size(50, 50);
+            this.btnLeftParens.TabIndex = 19;
+            this.btnLeftParens.Text = "(";
+            this.btnLeftParens.UseVisualStyleBackColor = true;
+            this.btnLeftParens.Click += new System.EventHandler(this.btnLeftParens_Click);
+            // 
+            // btnRightParens
+            // 
+            this.btnRightParens.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRightParens.Location = new System.Drawing.Point(209, 335);
+            this.btnRightParens.Name = "btnRightParens";
+            this.btnRightParens.Size = new System.Drawing.Size(50, 50);
+            this.btnRightParens.TabIndex = 20;
+            this.btnRightParens.Text = ")";
+            this.btnRightParens.UseVisualStyleBackColor = true;
+            this.btnRightParens.Click += new System.EventHandler(this.btnRightParens_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(333, 341);
+            this.ClientSize = new System.Drawing.Size(333, 399);
+            this.Controls.Add(this.btnRightParens);
+            this.Controls.Add(this.btnLeftParens);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnMultiply);
             this.Controls.Add(this.btnDivide);
@@ -309,6 +335,8 @@
         public System.Windows.Forms.Button btnMultiply;
         public System.Windows.Forms.Button btnClear;
         public System.Windows.Forms.TextBox txtInput;
+        public System.Windows.Forms.Button btnLeftParens;
+        public System.Windows.Forms.Button btnRightParens;
     }
 }
 

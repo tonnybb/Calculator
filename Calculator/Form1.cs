@@ -93,6 +93,16 @@ namespace Calculator
             txtInput.Text = txtInput.Text + " * ";
         }
 
+        private void btnLeftParens_Click(object sender, EventArgs e)
+        {
+            txtInput.Text = txtInput.Text + "(";
+        }
+
+        private void btnRightParens_Click(object sender, EventArgs e)
+        {
+            txtInput.Text = txtInput.Text + ")";
+        }
+
         private void btnClear_Click(object sender, EventArgs e)
         {
             txtInput.Text = "";
