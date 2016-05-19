@@ -219,14 +219,14 @@ namespace Calculator
             // Run until there are no more parentheses in input
             while (parensCount > 0)
             {
-                // find first set of inner most parentheses
+                // Locate first set of innermost parentheses
                 int leftParensPosition = 0;
                 int rightParensPosition = 0;
                 int parensFound = 0;
                 int i = -1;
                 double parensResult = 0.0;
 
-                // This while loop is used to determine the location of the inner most left parentheses
+                // This while loop is used to determine the location of the innermost left parentheses
                 while (parensFound < parensCount)
                 {
                     i++;
@@ -240,6 +240,7 @@ namespace Calculator
 
                 leftParensPosition = i;
 
+                // Find position of innermost right parentheses
                 int j = leftParensPosition;
                 while (!splitArray[j].Equals(")"))
                 {
@@ -247,23 +248,23 @@ namespace Calculator
                 }
                 rightParensPosition = j;
 
-                // Range has been found.. now calculate the result of number inside the parens pair
-                // Can we make a new, smaller list/array of numbers, and pass of to doDivAndMult + doAddandSub?
+                // Take the numbers inside the parentheses and put them into a sublist
                 int startIndex = leftParensPosition + 1;
                 int range = rightParensPosition - leftParensPosition - 1;
                 List<string> subList = splitArray.GetRange(startIndex, range);
 
+                // Calculate the result of the numbers found inside parentheses pair
                 parensResult = doDivisionAndMultiplication(subList, parensResult);
                 parensResult = doAdditionAndSubtraction(subList, parensResult);
 
-                // remove parens and numbers within
+                // Remove parentheses and numbers within
                 int rangeToRemove = rightParensPosition - leftParensPosition + 1;
                 splitArray.RemoveRange(leftParensPosition, rangeToRemove);
 
-                // insert result back into splitArray
+                // Insert result of calculation within parentheses back into splitArray
                 splitArray.Insert(leftParensPosition, parensResult.ToString());
 
-                // Decrement number of parentheses found
+                // One pair of parentheses have been dealt with.
                 parensCount--;
             }
         }
