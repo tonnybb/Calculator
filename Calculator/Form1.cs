@@ -258,6 +258,52 @@ namespace Calculator
                 // Check for invalid number of parens
                 CheckValidNumberOfParens(splitArray);
 
+                int parensCount = 0;
+                // count number of parentheses
+                for (int i = 0; i < splitArray.Count; i++)
+                {
+                    if (splitArray[i].Equals("("))
+                    {
+                        parensCount++;
+                    }
+                }
+
+                while (parensCount > 0)
+                {
+                    // find first set of inner most parentheses
+                    int leftParensPosition = 0;
+                    int rightParensPosition = 0;
+                    int parensFound = 0;
+
+                    for (int i = 0; i < splitArray.Count; i++)
+                    {
+                        if (splitArray[i].Equals("("))
+                        {
+                            // Count how many parentheses we have found so far
+                            parensFound++;
+
+                            // This means we are at the inner most pair of parentheses
+                            if (parensFound == parensCount)
+                            {
+                                leftParensPosition = i;
+                            }
+                        }
+                    }
+
+                    // find right parens position
+                    for (int j = leftParensPosition; j < splitArray.Count; j++)
+                    {
+                        if (splitArray[j].Equals(")"))
+                        {
+                            rightParensPosition = j;
+                        }
+                    }
+
+                    // Range has been found.. now calculate the result of number inside the parens pair
+                    // Can we make a new, smaller list/array of numbers, and pass of to doDivAndMult + doAddandSub?
+
+                }
+
                 // Do division and multiplication
                 result = doDivisionAndMultiplication(splitArray);
 
