@@ -279,6 +279,17 @@ namespace Calculator
             }
         }
 
+        private void RemoveUnnecessarySignsFromBeginningOfInput(List<string> splitArray)
+        {
+            if (splitArray.Count > 0)
+            {
+                while (splitArray[0].Equals("/") || splitArray[0].Equals("*") || splitArray[0].Equals("+"))
+                {
+                    splitArray.RemoveAt(0);
+                }
+            }
+        }
+
         private void btnEquals_Click(object sender, EventArgs e)
         {
             double result = 0.0;
@@ -287,13 +298,6 @@ namespace Calculator
             txtOutput.Text = "";
 
             string inputString = txtInput.Text;
-
-            // remove extraneous signs from beginnning of string
-            if (inputString.Length > 1 )
-            {
-                if (inputString[1] == '/' || inputString[1] == '*' || inputString[1] == '+')
-                    inputString = inputString.Substring(3);
-            }
 
             // Split array based on whitespace
             List<string> splitArray = new List<string>(inputString.Split(' '));
@@ -308,6 +312,9 @@ namespace Calculator
 
                 // remove empty white space
                 RemoveEmptyStrings(splitArray);
+
+                // Remove duplicate or unnecessary / * + signs from beginning of input
+                RemoveUnnecessarySignsFromBeginningOfInput(splitArray);
 
                 // Calculate values inside parentheses
                 CalculateParentheses(splitArray);
