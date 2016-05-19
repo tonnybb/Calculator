@@ -112,7 +112,7 @@ namespace Calculator
             return true;
         }
 
-        private bool CheckDivisionByZero(List<string> splitArray)
+        private void CheckDivisionByZero(List<string> splitArray)
         {
             for (int i = 0; i < (splitArray.Count - 1); i++)
             {
@@ -120,11 +120,9 @@ namespace Calculator
 
                 if (stringToTest.Equals("/0"))
                 {
-                    return false;
+                    throw new System.DivideByZeroException();
                 }
             }
-
-            return true;
         }
 
         private void CheckValidNumberOfParens(List<string> splitArray) 
