@@ -9,6 +9,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+/* 
+     Make numbers to the left of parentheses multiply by the numbers inside the parentheses
+
+    Use RegEx to recognize when a number is followed by a parentheses
+    then add a multiplication symbol between number and parentheses
+
+    handle negative numbers
+
+    handle duplicate /*-+ signs within input string
+    - how about.. when detecting a /*-+ operation, and trying to convert operands
+	    into numbers, if the conversion fails, remove the operand from the splitArray
+     */
+
 namespace Calculator
 {
     public partial class Form1 : Form
