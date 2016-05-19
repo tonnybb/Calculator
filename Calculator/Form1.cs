@@ -156,12 +156,12 @@ namespace Calculator
                     if (splitArray[i].Equals("/") || splitArray[i].Equals("*"))
                     {
                         // convert left operand to number
-                        string leftOperandString = splitArray[i - 1];
-                        double leftOperand = Double.Parse(leftOperandString);
+                        //string leftOperandString = splitArray[i - 1];
+                        double leftOperand = Double.Parse(splitArray[i - 1]);
 
                         // convert right operand to number
-                        string rightOperandString = splitArray[i + 1];
-                        double rightOperand = Double.Parse(rightOperandString);
+                        //string rightOperandString = splitArray[i + 1];
+                        double rightOperand = Double.Parse(splitArray[i + 1]);
 
                         if (splitArray[i].Equals("/"))
                         {
@@ -189,12 +189,12 @@ namespace Calculator
                     if (splitArray[i].Equals("+") || splitArray[i].Equals("-"))
                     {
                         // convert left operand to number
-                        string leftOperandString = splitArray[i - 1];
-                        double leftOperand = Double.Parse(leftOperandString);
+                        //string leftOperandString = splitArray[i - 1];
+                        double leftOperand = Double.Parse(splitArray[i - 1]);
 
                         // convert right operand to number
-                        string rightOperandString = splitArray[i + 1];
-                        double rightOperand = Double.Parse(rightOperandString);
+                        //string rightOperandString = splitArray[i + 1];
+                        double rightOperand = Double.Parse(splitArray[i + 1]);
 
                         if (splitArray[i].Equals("+"))
                         {
