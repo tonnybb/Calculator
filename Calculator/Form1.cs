@@ -157,7 +157,81 @@ namespace Calculator
             {
                 throw new InvalidNumberOfParensException("Left and right parenthesis must match.");
             }
+        }
 
+        private double doDivisionAndMultiplication(List<string> splitArray)
+        {
+            double result = 0.0;
+
+            for (int i = 0; i < splitArray.Count; i++)
+            {
+                if (splitArray[i].Equals("/") || splitArray[i].Equals("*"))
+                {
+                    // convert left operand to number
+                    double leftOperand = Double.Parse(splitArray[i - 1]);
+
+                    // convert right operand to number
+                    double rightOperand = Double.Parse(splitArray[i + 1]);
+
+                    if (splitArray[i].Equals("/"))
+                    {
+                        result = leftOperand / rightOperand;
+                    }
+                    else if (splitArray[i].Equals("*"))
+                    {
+                        result = leftOperand * rightOperand;
+                    }
+
+                    // remove operands that have already been calculated
+                    splitArray.RemoveRange((i - 1), 3);
+
+                    // add result back into splitArray
+                    splitArray.Insert((i - 1), result.ToString());
+
+                    // reset 'i' back to beginning of array
+                    i = -1;
+                }
+            }
+
+            return result;
+        }
+
+        private double doAdditionAndSubtraction(List<string> splitArray)
+        {
+            double result = 0.0;
+
+            for (int i = 0; i < splitArray.Count; i++)
+            {
+
+                if (splitArray[i].Equals("+") || splitArray[i].Equals("-"))
+                {
+                    // convert left operand to number
+                    double leftOperand = Double.Parse(splitArray[i - 1]);
+
+                    // convert right operand to number
+                    double rightOperand = Double.Parse(splitArray[i + 1]);
+
+                    if (splitArray[i].Equals("+"))
+                    {
+                        result = leftOperand + rightOperand;
+                    }
+                    else if (splitArray[i].Equals("-"))
+                    {
+                        result = leftOperand - rightOperand;
+                    }
+
+                    // remove operands that have already been calculated
+                    splitArray.RemoveRange((i - 1), 3);
+
+                    // add result back into splitArray
+                    splitArray.Insert((i - 1), result.ToString());
+
+                    // reset 'i' back to beginning of array
+                    i = -1;
+                }
+            }
+
+            return result;
         }
 
         private void btnEquals_Click(object sender, EventArgs e)
@@ -187,67 +261,11 @@ namespace Calculator
                 // Check for invalid number of parens
                 CheckValidNumberOfParens(splitArray);
 
-                for (int i = 0; i < splitArray.Count; i++)
-                {
-                    if (splitArray[i].Equals("/") || splitArray[i].Equals("*"))
-                    {
-                        // convert left operand to number
-                        double leftOperand = Double.Parse(splitArray[i - 1]);
+                // Do division and multiplication
+                result = doDivisionAndMultiplication(splitArray);
 
-                        // convert right operand to number
-                        double rightOperand = Double.Parse(splitArray[i + 1]);
-
-                        if (splitArray[i].Equals("/"))
-                        {
-                            result = leftOperand / rightOperand;
-                        }
-                        else if (splitArray[i].Equals("*"))
-                        {
-                            result = leftOperand * rightOperand;
-                        }
-
-                        // remove operands that have already been calculated
-                        splitArray.RemoveRange((i - 1), 3);
-
-                        // add result back into splitArray
-                        splitArray.Insert((i - 1), result.ToString());
-
-                        // reset 'i' back to beginning of array
-                        i = -1;
-                    }
-                }
-
-                for (int i = 0; i < splitArray.Count; i++)
-                {
-
-                    if (splitArray[i].Equals("+") || splitArray[i].Equals("-"))
-                    {
-                        // convert left operand to number
-                        double leftOperand = Double.Parse(splitArray[i - 1]);
-
-                        // convert right operand to number
-                        double rightOperand = Double.Parse(splitArray[i + 1]);
-
-                        if (splitArray[i].Equals("+"))
-                        {
-                            result = leftOperand + rightOperand;
-                        }
-                        else if (splitArray[i].Equals("-"))
-                        {
-                            result = leftOperand - rightOperand;
-                        }
-
-                        // remove operands that have already been calculated
-                        splitArray.RemoveRange((i - 1), 3);
-
-                        // add result back into splitArray
-                        splitArray.Insert((i - 1), result.ToString());
-
-                        // reset 'i' back to beginning of array
-                        i = -1;
-                    }
-                }
-
+                // Do addition and subtraction
+                result = doAdditionAndSubtraction(splitArray);
 
                 // Output result of calculation
                 txtOutput.Text = result.ToString();
