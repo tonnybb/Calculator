@@ -125,7 +125,7 @@ namespace Calculator
             }
         }
 
-        private void CheckValidNumberOfParens(List<string> splitArray) 
+        private void CheckValidNumberOfParens(List<string> splitArray)
         {
             int leftParens = 0;
             int rightParens = 0;
@@ -169,11 +169,14 @@ namespace Calculator
             // Split array based on whitespace
             List<string> splitArray = new List<string>(inputString.Split(' '));
 
-            // check for division by zero
-            bool noDivisionByZero = hasNoDivisionByZero(splitArray);
-
-            if (noDivisionByZero)
+            try
             {
+                // check for division by zero
+                CheckDivisionByZero(splitArray);
+
+                // Check for invalid number of parens
+                CheckValidNumberOfParens(splitArray);
+
                 for (int i = 0; i < splitArray.Count; i++)
                 {
                     if (splitArray[i].Equals("/") || splitArray[i].Equals("*"))
@@ -233,16 +236,19 @@ namespace Calculator
                         // reset 'i' back to beginning of array
                         i = -1;
                     }
-
                 }
 
-                txtOutput.Text = result.ToString();
 
-                // check for division by 0
+                // Output result of calculation
+                txtOutput.Text = result.ToString();
             }
-            else
+            catch (System.DivideByZeroException ex)
             {
                 txtOutput.Text = "Cannot perform division by 0.";
+            }
+            catch (InvalidNumberOfParensException ex)
+            {
+                txtOutput.Text = ex.Message;
             }
         }
     }
