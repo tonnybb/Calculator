@@ -75,7 +75,7 @@
             // 
             // btn7
             // 
-            this.btn7.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn7.Font = new System.Drawing.Font("Courier New", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn7.Location = new System.Drawing.Point(14, 111);
             this.btn7.Name = "btn7";
             this.btn7.Size = new System.Drawing.Size(50, 50);
@@ -86,7 +86,7 @@
             // 
             // btn8
             // 
-            this.btn8.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn8.Font = new System.Drawing.Font("Courier New", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn8.Location = new System.Drawing.Point(79, 111);
             this.btn8.Name = "btn8";
             this.btn8.Size = new System.Drawing.Size(50, 50);
@@ -97,7 +97,7 @@
             // 
             // btn9
             // 
-            this.btn9.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn9.Font = new System.Drawing.Font("Courier New", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn9.Location = new System.Drawing.Point(144, 111);
             this.btn9.Name = "btn9";
             this.btn9.Size = new System.Drawing.Size(50, 50);
@@ -108,7 +108,7 @@
             // 
             // btn4
             // 
-            this.btn4.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn4.Font = new System.Drawing.Font("Courier New", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn4.Location = new System.Drawing.Point(14, 167);
             this.btn4.Name = "btn4";
             this.btn4.Size = new System.Drawing.Size(50, 50);
@@ -119,7 +119,7 @@
             // 
             // btn5
             // 
-            this.btn5.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn5.Font = new System.Drawing.Font("Courier New", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn5.Location = new System.Drawing.Point(79, 167);
             this.btn5.Name = "btn5";
             this.btn5.Size = new System.Drawing.Size(50, 50);
@@ -130,7 +130,7 @@
             // 
             // btn6
             // 
-            this.btn6.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn6.Font = new System.Drawing.Font("Courier New", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn6.Location = new System.Drawing.Point(144, 167);
             this.btn6.Name = "btn6";
             this.btn6.Size = new System.Drawing.Size(50, 50);
@@ -141,7 +141,7 @@
             // 
             // btn1
             // 
-            this.btn1.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn1.Font = new System.Drawing.Font("Courier New", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn1.Location = new System.Drawing.Point(14, 223);
             this.btn1.Name = "btn1";
             this.btn1.Size = new System.Drawing.Size(50, 50);
@@ -152,7 +152,7 @@
             // 
             // btn2
             // 
-            this.btn2.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn2.Font = new System.Drawing.Font("Courier New", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn2.Location = new System.Drawing.Point(79, 223);
             this.btn2.Name = "btn2";
             this.btn2.Size = new System.Drawing.Size(50, 50);
@@ -163,7 +163,7 @@
             // 
             // btn3
             // 
-            this.btn3.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn3.Font = new System.Drawing.Font("Courier New", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn3.Location = new System.Drawing.Point(144, 223);
             this.btn3.Name = "btn3";
             this.btn3.Size = new System.Drawing.Size(50, 50);
@@ -174,7 +174,7 @@
             // 
             // btn0
             // 
-            this.btn0.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn0.Font = new System.Drawing.Font("Courier New", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn0.Location = new System.Drawing.Point(14, 279);
             this.btn0.Name = "btn0";
             this.btn0.Size = new System.Drawing.Size(115, 50);
@@ -185,7 +185,7 @@
             // 
             // btnComma
             // 
-            this.btnComma.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnComma.Font = new System.Drawing.Font("Courier New", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnComma.Location = new System.Drawing.Point(144, 279);
             this.btnComma.Name = "btnComma";
             this.btnComma.Size = new System.Drawing.Size(50, 50);
@@ -196,7 +196,7 @@
             // 
             // btnEquals
             // 
-            this.btnEquals.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEquals.Font = new System.Drawing.Font("Courier New", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEquals.Location = new System.Drawing.Point(271, 223);
             this.btnEquals.Name = "btnEquals";
             this.btnEquals.Size = new System.Drawing.Size(50, 106);
@@ -207,7 +207,7 @@
             // 
             // btnPlus
             // 
-            this.btnPlus.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPlus.Font = new System.Drawing.Font("Courier New", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPlus.Location = new System.Drawing.Point(209, 111);
             this.btnPlus.Name = "btnPlus";
             this.btnPlus.Size = new System.Drawing.Size(50, 50);
@@ -218,7 +218,7 @@
             // 
             // btnMinus
             // 
-            this.btnMinus.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMinus.Font = new System.Drawing.Font("Courier New", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMinus.Location = new System.Drawing.Point(209, 167);
             this.btnMinus.Name = "btnMinus";
             this.btnMinus.Size = new System.Drawing.Size(50, 50);
@@ -229,7 +229,7 @@
             // 
             // btnDivide
             // 
-            this.btnDivide.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDivide.Font = new System.Drawing.Font("Courier New", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDivide.Location = new System.Drawing.Point(209, 223);
             this.btnDivide.Name = "btnDivide";
             this.btnDivide.Size = new System.Drawing.Size(50, 50);
@@ -240,7 +240,7 @@
             // 
             // btnMultiply
             // 
-            this.btnMultiply.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMultiply.Font = new System.Drawing.Font("Courier New", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMultiply.Location = new System.Drawing.Point(209, 279);
             this.btnMultiply.Name = "btnMultiply";
             this.btnMultiply.Size = new System.Drawing.Size(50, 50);
@@ -251,7 +251,7 @@
             // 
             // btnClear
             // 
-            this.btnClear.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClear.Font = new System.Drawing.Font("Courier New", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClear.Location = new System.Drawing.Point(271, 111);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(50, 106);
@@ -262,7 +262,7 @@
             // 
             // btnLeftParens
             // 
-            this.btnLeftParens.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLeftParens.Font = new System.Drawing.Font("Courier New", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLeftParens.Location = new System.Drawing.Point(144, 335);
             this.btnLeftParens.Name = "btnLeftParens";
             this.btnLeftParens.Size = new System.Drawing.Size(50, 50);
@@ -273,7 +273,7 @@
             // 
             // btnRightParens
             // 
-            this.btnRightParens.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRightParens.Font = new System.Drawing.Font("Courier New", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRightParens.Location = new System.Drawing.Point(209, 335);
             this.btnRightParens.Name = "btnRightParens";
             this.btnRightParens.Size = new System.Drawing.Size(50, 50);

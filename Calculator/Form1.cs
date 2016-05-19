@@ -268,6 +268,17 @@ namespace Calculator
             }
         }
 
+        private void RemoveEmptyStrings(List<string> splitArray)
+        {
+            for (int i = 0; i < splitArray.Count; i++)
+            {
+                if (splitArray[i].Equals(""))
+                {
+                    splitArray.RemoveAt(i);
+                }
+            }
+        }
+
         private void btnEquals_Click(object sender, EventArgs e)
         {
             double result = 0.0;
@@ -278,8 +289,11 @@ namespace Calculator
             string inputString = txtInput.Text;
 
             // remove extraneous signs from beginnning of string
-            if (inputString[1] == '/' || inputString[1] == '*' || inputString[1] == '+')
-                inputString = inputString.Substring(3);
+            if (inputString.Length > 1 )
+            {
+                if (inputString[1] == '/' || inputString[1] == '*' || inputString[1] == '+')
+                    inputString = inputString.Substring(3);
+            }
 
             // Split array based on whitespace
             List<string> splitArray = new List<string>(inputString.Split(' '));
@@ -293,13 +307,7 @@ namespace Calculator
                 CheckValidNumberOfParens(splitArray);
 
                 // remove empty white space
-                for (int i = 0; i < splitArray.Count; i++)
-                {
-                    if (splitArray[i].Equals(""))
-                    {
-                        splitArray.RemoveAt(i);
-                    }
-                }
+                RemoveEmptyStrings(splitArray);
 
                 // Calculate values inside parentheses
                 CalculateParentheses(splitArray);
