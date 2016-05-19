@@ -159,10 +159,8 @@ namespace Calculator
             }
         }
 
-        private double doDivisionAndMultiplication(List<string> splitArray)
+        private double doDivisionAndMultiplication(List<string> splitArray, double result)
         {
-            double result = 0.0;
-
             for (int i = 0; i < splitArray.Count; i++)
             {
                 if (splitArray[i].Equals("/") || splitArray[i].Equals("*"))
@@ -196,10 +194,8 @@ namespace Calculator
             return result;
         }
 
-        private double doAdditionAndSubtraction(List<string> splitArray)
+        private double doAdditionAndSubtraction(List<string> splitArray, double result)
         {
-            double result = 0.0;
-
             for (int i = 0; i < splitArray.Count; i++)
             {
 
@@ -305,10 +301,10 @@ namespace Calculator
                 }
 
                 // Do division and multiplication
-                result = doDivisionAndMultiplication(splitArray);
+                result = doDivisionAndMultiplication(splitArray, result);
 
                 // Do addition and subtraction
-                result = doAdditionAndSubtraction(splitArray);
+                result = doAdditionAndSubtraction(splitArray, result);
 
                 // Output result of calculation
                 txtOutput.Text = result.ToString();
