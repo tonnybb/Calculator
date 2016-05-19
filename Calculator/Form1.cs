@@ -95,12 +95,12 @@ namespace Calculator
 
         private void btnLeftParens_Click(object sender, EventArgs e)
         {
-            txtInput.Text = txtInput.Text + "(";
+            txtInput.Text = txtInput.Text + " ( ";
         }
 
         private void btnRightParens_Click(object sender, EventArgs e)
         {
-            txtInput.Text = txtInput.Text + ")";
+            txtInput.Text = txtInput.Text + " ) ";
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -161,6 +161,8 @@ namespace Calculator
 
         private double doDivisionAndMultiplication(List<string> splitArray, double result)
         {
+            double output = 0.0;
+
             for (int i = 0; i < splitArray.Count; i++)
             {
                 if (splitArray[i].Equals("/") || splitArray[i].Equals("*"))
@@ -173,29 +175,31 @@ namespace Calculator
 
                     if (splitArray[i].Equals("/"))
                     {
-                        result = leftOperand / rightOperand;
+                        output = leftOperand / rightOperand;
                     }
                     else if (splitArray[i].Equals("*"))
                     {
-                        result = leftOperand * rightOperand;
+                        output = leftOperand * rightOperand;
                     }
 
                     // remove operands that have already been calculated
                     splitArray.RemoveRange((i - 1), 3);
 
                     // add result back into splitArray
-                    splitArray.Insert((i - 1), result.ToString());
+                    splitArray.Insert((i - 1), output.ToString());
 
                     // reset 'i' back to beginning of array
                     i = -1;
                 }
             }
 
-            return result;
+            return result + output;
         }
 
         private double doAdditionAndSubtraction(List<string> splitArray, double result)
         {
+            double output = 0.0;
+
             for (int i = 0; i < splitArray.Count; i++)
             {
 
@@ -209,25 +213,25 @@ namespace Calculator
 
                     if (splitArray[i].Equals("+"))
                     {
-                        result = leftOperand + rightOperand;
+                        output = leftOperand + rightOperand;
                     }
                     else if (splitArray[i].Equals("-"))
                     {
-                        result = leftOperand - rightOperand;
+                        output = leftOperand - rightOperand;
                     }
 
-                    // remove operands that have already been calculated
+                    // remove operands and operators that have already been calculated
                     splitArray.RemoveRange((i - 1), 3);
 
                     // add result back into splitArray
-                    splitArray.Insert((i - 1), result.ToString());
+                    splitArray.Insert((i - 1), output.ToString());
 
                     // reset 'i' back to beginning of array
                     i = -1;
                 }
             }
 
-            return result;
+            return result + output;
         }
 
         private void btnEquals_Click(object sender, EventArgs e)
@@ -254,8 +258,17 @@ namespace Calculator
                 // Check for invalid number of parens
                 CheckValidNumberOfParens(splitArray);
 
-                int parensCount = 0;
+                // remove empty white space
+                for (int i = 0; i < splitArray.Count; i++)
+                {
+                    if (splitArray[i].Equals(""))
+                    {
+                        splitArray.RemoveAt(i);
+                    }
+                }
+
                 // count number of parentheses
+                int parensCount = 0;
                 for (int i = 0; i < splitArray.Count; i++)
                 {
                     if (splitArray[i].Equals("("))
@@ -264,40 +277,79 @@ namespace Calculator
                     }
                 }
 
+                // Run until there are no more parentheses in input
                 while (parensCount > 0)
                 {
                     // find first set of inner most parentheses
                     int leftParensPosition = 0;
                     int rightParensPosition = 0;
                     int parensFound = 0;
+                    int i = -1;
+                    double parensResult = 0.0;
 
-                    for (int i = 0; i < splitArray.Count; i++)
+                    // This while loop is used to determine the location of the inner most left parentheses
+                    while(parensFound < parensCount)
                     {
+                        i++;
+
                         if (splitArray[i].Equals("("))
                         {
                             // Count how many parentheses we have found so far
                             parensFound++;
-
-                            // This means we are at the inner most pair of parentheses
-                            if (parensFound == parensCount)
-                            {
-                                leftParensPosition = i;
-                            }
                         }
                     }
+
+                    leftParensPosition = i;
+
+                    //for (i = 0; i < splitArray.Count; i++)
+                    //{
+                    //    if (splitArray[i].Equals("("))
+                    //    {
+                    //        // Count how many parentheses we have found so far
+                    //        parensFound++;
+
+                    //        // This means we are at the inner most pair of parentheses
+                    //        if (parensFound == parensCount)
+                    //        {
+                    //            leftParensPosition = i;
+                    //        }
+                    //    }
+                    //}
+
+                    int j = leftParensPosition;
+                    while (!splitArray[j].Equals(")"))
+                    {
+                        j++; 
+                    }
+                    rightParensPosition = j;
 
                     // find right parens position
-                    for (int j = leftParensPosition; j < splitArray.Count; j++)
-                    {
-                        if (splitArray[j].Equals(")"))
-                        {
-                            rightParensPosition = j;
-                        }
-                    }
+                    //for (int j = leftParensPosition; j < splitArray.Count; j++)
+                    //{
+                    //    if (splitArray[j].Equals(")"))
+                    //    {
+                    //        rightParensPosition = j;
+                    //    }
+                    //}
 
                     // Range has been found.. now calculate the result of number inside the parens pair
                     // Can we make a new, smaller list/array of numbers, and pass of to doDivAndMult + doAddandSub?
+                    int startIndex = leftParensPosition + 1;
+                    int range = rightParensPosition - leftParensPosition - 1;
+                    List<string> subList = splitArray.GetRange(startIndex, range);
 
+                    parensResult = doDivisionAndMultiplication(subList, parensResult);
+                    parensResult = doAdditionAndSubtraction(subList, parensResult);
+
+                    // remove parens and numbers within
+                    int rangeToRemove = rightParensPosition - leftParensPosition + 1;
+                    splitArray.RemoveRange(leftParensPosition, rangeToRemove);
+
+                    // insert result back into splitArray
+                    splitArray.Insert(leftParensPosition, parensResult.ToString());
+
+                    // Decrement number of parentheses found
+                    parensCount--;
                 }
 
                 // Do division and multiplication
