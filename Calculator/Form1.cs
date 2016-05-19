@@ -18,95 +18,65 @@ namespace Calculator
             InitializeComponent();
         }
 
-        private void btn7_Click(object sender, EventArgs e)
+        private void Button_Click(object sender, EventArgs e)
         {
-            txtInput.Text = txtInput.Text + "7";
-        }
+            string buttonText = ((Button)sender).Text;
 
-        private void btn8_Click(object sender, EventArgs e)
-        {
-            txtInput.Text = txtInput.Text + "8";
-        }
-
-        private void btn9_Click(object sender, EventArgs e)
-        {
-            txtInput.Text = txtInput.Text + "9";
-        }
-
-        private void btn4_Click(object sender, EventArgs e)
-        {
-            txtInput.Text = txtInput.Text + "4";
-        }
-
-        private void btn5_Click(object sender, EventArgs e)
-        {
-            txtInput.Text = txtInput.Text + "5";
-        }
-
-        private void btn6_Click(object sender, EventArgs e)
-        {
-            txtInput.Text = txtInput.Text + "6";
-        }
-
-        private void btn1_Click(object sender, EventArgs e)
-        {
-            txtInput.Text = txtInput.Text + "1";
-        }
-
-        private void btn2_Click(object sender, EventArgs e)
-        {
-            txtInput.Text = txtInput.Text + "2";
-        }
-
-        private void btn3_Click(object sender, EventArgs e)
-        {
-            txtInput.Text = txtInput.Text + "3";
-        }
-
-        private void btn0_Click(object sender, EventArgs e)
-        {
-            txtInput.Text = txtInput.Text + "0";
-        }
-
-        private void btnComma_Click(object sender, EventArgs e)
-        {
-            txtInput.Text = txtInput.Text + ".";
-        }
-
-        private void btnPlus_Click(object sender, EventArgs e)
-        {
-            txtInput.Text = txtInput.Text + " + ";
-        }
-
-        private void btnMinus_Click(object sender, EventArgs e)
-        {
-            txtInput.Text = txtInput.Text + " - ";
-        }
-
-        private void btnDivide_Click(object sender, EventArgs e)
-        {
-            txtInput.Text = txtInput.Text + " / ";
-        }
-
-        private void btnMultiply_Click(object sender, EventArgs e)
-        {
-            txtInput.Text = txtInput.Text + " * ";
-        }
-
-        private void btnLeftParens_Click(object sender, EventArgs e)
-        {
-            txtInput.Text = txtInput.Text + " ( ";
-        }
-
-        private void btnRightParens_Click(object sender, EventArgs e)
-        {
-            txtInput.Text = txtInput.Text + " ) ";
-        }
-
-        private void btnClear_Click(object sender, EventArgs e)
-        {
-            txtInput.Text = "";
-            txtOutput.Text = "";
+            switch (buttonText)
+            {
+                case "0":
+                    txtInput.Text += "0";
+                    break;
+                case "1":
+                    txtInput.Text += "1";
+                    break;
+                case "2":
+                    txtInput.Text += "2";
+                    break;
+                case "3":
+                    txtInput.Text += "3";
+                    break;
+                case "4":
+                    txtInput.Text += "4";
+                    break;
+                case "5":
+                    txtInput.Text += "5";
+                    break;
+                case "6":
+                    txtInput.Text += "6";
+                    break;
+                case "7":
+                    txtInput.Text += "7";
+                    break;
+                case "8":
+                    txtInput.Text += "8";
+                    break;
+                case "9":
+                    txtInput.Text += "9";
+                    break;
+                case "+":
+                    txtInput.Text += " + ";
+                    break;
+                case "-":
+                    txtInput.Text += " - ";
+                    break;
+                case "/":
+                    txtInput.Text += " / ";
+                    break;
+                case "*":
+                    txtInput.Text += " * ";
+                    break;
+                case "(":
+                    txtInput.Text += " ( ";
+                    break;
+                case ")":
+                    txtInput.Text += " ) ";
+                    break;
+                case "C":
+                    txtInput.Text = "";
+                    txtOutput.Text = "";
+                    break;
+            }
         }
 
         private bool isValidInput(string input)
