@@ -6,10 +6,13 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 /* 
+ * TODO:
+ * 
      Make numbers to the left of parentheses multiply by the numbers inside the parentheses
 
     Use RegEx to recognize when a number is followed by a parentheses
@@ -304,6 +307,33 @@ namespace Calculator
             }
         }
 
+        private void AddMultiplicationInFrontOfParentheses(List<string> splitArray)
+        {
+            // Convert the splitArray to string so that we can use RegEx on it
+            string str = string.Join("", splitArray);
+
+            // This pattern will match any number followed by a "("
+            Regex regex = new Regex(@"[1-9]\(");
+            Match match = regex.Match(str);
+
+            int count = 1;
+            while (match.Success)
+            {
+                int matchFoundIndex = match.Index;
+
+                /* What is count used for?
+                 * When regex.Match has been applied, it has already found all matching patterns within the string.
+                 So when we insert stuff into the array, it messes with the index positions of matching patterns that regex.Match found.
+                 Therefore, we need to increase the the index position where we insert the * signs every time an insertion is made.
+                */
+                splitArray.Insert((matchFoundIndex + count), "*");
+
+                // See if there is another match
+                match = match.NextMatch();
+                count++;
+            }
+        }
+
         private void btnEquals_Click(object sender, EventArgs e)
         {
             double result = 0.0;
@@ -312,15 +342,13 @@ namespace Calculator
             txtOutput.Text = "";
 
             string inputString = txtInput.Text;
+            //string inputString = "2 ( 3 ( 4 - 1 )  ) ";
 
             // Split array based on whitespace
             List<string> splitArray = new List<string>(inputString.Split(' '));
 
             try
             {
-                // check for division by zero
-                CheckDivisionByZero(splitArray);
-
                 // Check for invalid number of parens
                 CheckValidNumberOfParens(splitArray);
 
@@ -329,6 +357,12 @@ namespace Calculator
 
                 // Remove duplicate or unnecessary / * + signs from beginning of input
                 RemoveUnnecessarySignsFromBeginningOfInput(splitArray);
+
+                // check for division by zero
+                CheckDivisionByZero(splitArray);
+
+                // Insert multiplication signs to the left of parentheses
+                AddMultiplicationInFrontOfParentheses(splitArray);
 
                 // Calculate values inside parentheses
                 CalculateParentheses(splitArray);
