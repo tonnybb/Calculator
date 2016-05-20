@@ -149,6 +149,14 @@ namespace Calculator
         {
             double output = 0.0;
 
+            /* If there is only one number in the array, there is no need to do any
+             * calculation. Just return the value.
+             */
+            if (splitArray.Count == 1)
+            {
+                return Double.Parse(splitArray[0]);
+            }
+
             for (int i = 0; i < splitArray.Count; i++)
             {
                 if (splitArray[i].Equals("/") || splitArray[i].Equals("*"))
@@ -185,6 +193,14 @@ namespace Calculator
         private double doAdditionAndSubtraction(List<string> splitArray, double result)
         {
             double output = 0.0;
+
+            /* If there is only one number in the array, there is no need to do any
+             * calculation. Just return the value.
+             */
+            if (splitArray.Count == 1)
+            {
+                return Double.Parse(splitArray[0]);
+            }
 
             for (int i = 0; i < splitArray.Count; i++)
             {
@@ -342,7 +358,7 @@ namespace Calculator
             txtOutput.Text = "";
 
             string inputString = txtInput.Text;
-            //string inputString = "2 ( 3 ( 4 - 1 )  ) ";
+            //string inputString = "2 ( 3 ( 4 )  ) ";
 
             // Split array based on whitespace
             List<string> splitArray = new List<string>(inputString.Split(' '));
