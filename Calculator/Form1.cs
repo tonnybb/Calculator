@@ -12,13 +12,6 @@ using System.Windows.Forms;
 
 /* 
  * TODO:
- * 
-     Make numbers to the left of parentheses multiply by the numbers inside the parentheses
-
-    Use RegEx to recognize when a number is followed by a parentheses
-    then add a multiplication symbol between number and parentheses
-
-    handle negative numbers
 
     handle duplicate /*-+ signs within input string
     - how about.. when detecting a /*-+ operation, and trying to convert operands
@@ -145,7 +138,7 @@ namespace Calculator
             }
         }
 
-        private double doDivisionAndMultiplication(List<string> splitArray, double result)
+        private double DoDivisionAndMultiplication(List<string> splitArray, double result)
         {
             double output = 0.0;
 
@@ -155,6 +148,14 @@ namespace Calculator
             if (splitArray.Count == 1)
             {
                 return Double.Parse(splitArray[0]);
+            }
+
+            // This will be a negative number
+            if (splitArray.Count == 2)
+            {
+                string str = splitArray[0] + splitArray[1];
+                double number = Double.Parse(str);
+                return number;
             }
 
             for (int i = 0; i < splitArray.Count; i++)
@@ -190,7 +191,7 @@ namespace Calculator
             return result + output;
         }
 
-        private double doAdditionAndSubtraction(List<string> splitArray, double result)
+        private double DoAdditionAndSubtraction(List<string> splitArray, double result)
         {
             double output = 0.0;
 
@@ -200,6 +201,14 @@ namespace Calculator
             if (splitArray.Count == 1)
             {
                 return Double.Parse(splitArray[0]);
+            }
+
+            // This will be a negative number
+            if (splitArray.Count == 2)
+            {
+                string str = splitArray[0] + splitArray[1];
+                double number = Double.Parse(str);
+                return number;
             }
 
             for (int i = 0; i < splitArray.Count; i++)
@@ -286,8 +295,8 @@ namespace Calculator
                 List<string> subList = splitArray.GetRange(startIndex, range);
 
                 // Calculate the result of the numbers found inside parentheses pair
-                parensResult = doDivisionAndMultiplication(subList, parensResult);
-                parensResult = doAdditionAndSubtraction(subList, parensResult);
+                parensResult = DoDivisionAndMultiplication(subList, parensResult);
+                parensResult = DoAdditionAndSubtraction(subList, parensResult);
 
                 // Remove parentheses and numbers within
                 int rangeToRemove = rightParensPosition - leftParensPosition + 1;
@@ -358,7 +367,7 @@ namespace Calculator
             txtOutput.Text = "";
 
             string inputString = txtInput.Text;
-            //string inputString = "2 ( 3 ( 4 )  ) ";
+            //string inputString = "2 +  (  - 5 ) ";
 
             // Split array based on whitespace
             List<string> splitArray = new List<string>(inputString.Split(' '));
@@ -377,17 +386,17 @@ namespace Calculator
                 // check for division by zero
                 CheckDivisionByZero(splitArray);
 
-                // Insert multiplication signs to the left of parentheses
+                // Insert multiplication signs to the left of parentheses if there is a number immediately preceeding it
                 AddMultiplicationInFrontOfParentheses(splitArray);
 
                 // Calculate values inside parentheses
                 CalculateParentheses(splitArray);
 
                 // Do division and multiplication
-                result = doDivisionAndMultiplication(splitArray, result);
+                result = DoDivisionAndMultiplication(splitArray, result);
 
                 // Do addition and subtraction
-                result = doAdditionAndSubtraction(splitArray, result);
+                result = DoAdditionAndSubtraction(splitArray, result);
 
                 // Output result of calculation
                 txtOutput.Text = result.ToString();
