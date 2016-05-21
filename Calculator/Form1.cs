@@ -409,6 +409,11 @@ namespace Calculator
             {
                 txtOutput.Text = ex.Message;
             }
+            catch (System.FormatException ex)
+            {
+                string detailedMessage = ex.Message;
+                MessageBox.Show("Something went wrong.\nDetailed message: \n" + detailedMessage);
+            }
         }
     }
 }
