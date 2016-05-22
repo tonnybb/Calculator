@@ -49,6 +49,7 @@
             this.btnClear = new System.Windows.Forms.Button();
             this.btnLeftParens = new System.Windows.Forms.Button();
             this.btnRightParens = new System.Windows.Forms.Button();
+            this.btnFactorial = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtInput
@@ -282,12 +283,23 @@
             this.btnRightParens.UseVisualStyleBackColor = true;
             this.btnRightParens.Click += new System.EventHandler(this.Button_Click);
             // 
+            // btnFactorial
+            // 
+            this.btnFactorial.Font = new System.Drawing.Font("Courier New", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFactorial.Location = new System.Drawing.Point(271, 335);
+            this.btnFactorial.Name = "btnFactorial";
+            this.btnFactorial.Size = new System.Drawing.Size(50, 50);
+            this.btnFactorial.TabIndex = 21;
+            this.btnFactorial.Text = "!";
+            this.btnFactorial.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.ClientSize = new System.Drawing.Size(333, 399);
+            this.Controls.Add(this.btnFactorial);
             this.Controls.Add(this.btnRightParens);
             this.Controls.Add(this.btnLeftParens);
             this.Controls.Add(this.btnClear);
@@ -343,6 +355,7 @@
         public System.Windows.Forms.TextBox txtInput;
         public System.Windows.Forms.Button btnLeftParens;
         public System.Windows.Forms.Button btnRightParens;
+        public System.Windows.Forms.Button btnFactorial;
     }
 }
 

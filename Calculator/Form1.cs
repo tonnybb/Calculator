@@ -85,6 +85,9 @@ namespace Calculator
                     txtInput.Text = "";
                     txtOutput.Text = "";
                     break;
+                case "!":
+                    txtInput.Text += " ! ";
+                    break;
             }
         }
 
