@@ -359,6 +359,25 @@ namespace Calculator
             }
         }
 
+        private void DetectMultipleConsecutiveOperators(List<string> splitArray)
+        {
+            string[] operators = { "+", "-", "/", "*", "." };
+
+            for (int i = 0; i < (splitArray.Count -1) ; i++)
+            {
+                for (int j = 0; j < operators.Length; j++)
+                {
+                    for (int k = 0; k < operators.Length; k++)
+                    {
+                        if (splitArray[i].Equals(operators[j]) && splitArray[i + 1].Equals(operators[k]))
+                        {
+                            throw new MultipleConsecutiveOperatorsDetectedException("Multiple, consecutive operators detected in input.");
+                        }
+                    }
+                }
+            }
+        }
+
         private void btnEquals_Click(object sender, EventArgs e)
         {
             double result = 0.0;
@@ -377,8 +396,11 @@ namespace Calculator
                 // Check for invalid number of parens
                 CheckValidNumberOfParens(splitArray);
 
-                // remove empty white space
+                // Remove empty white space
                 RemoveEmptyStrings(splitArray);
+
+                // Show error if users something like "+ + - *"
+                DetectMultipleConsecutiveOperators(splitArray);
 
                 // Remove duplicate or unnecessary / * + signs from beginning of input
                 RemoveUnnecessarySignsFromBeginningOfInput(splitArray);
@@ -413,6 +435,10 @@ namespace Calculator
             {
                 string detailedMessage = ex.Message;
                 MessageBox.Show("Something went wrong.\nDetailed message: \n" + detailedMessage);
+            }
+            catch (MultipleConsecutiveOperatorsDetectedException ex)
+            {
+                txtOutput.Text = ex.Message;
             }
         }
     }
