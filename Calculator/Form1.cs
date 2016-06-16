@@ -22,6 +22,8 @@ namespace Calculator
 {
     public partial class Form1 : Form
     {
+        private bool equalsButtonPressed = false;
+
         public Form1()
         {
             InitializeComponent();
@@ -29,6 +31,12 @@ namespace Calculator
 
         private void Button_Click(object sender, EventArgs e)
         {
+            if (equalsButtonPressed)
+            {
+                txtInput.Text = "";
+                equalsButtonPressed = false;
+            }
+
             string buttonText = ((Button)sender).Text;
 
             switch (buttonText)
@@ -81,9 +89,11 @@ namespace Calculator
                 case ")":
                     txtInput.Text += " ) ";
                     break;
+                case ".":
+                    txtInput.Text += ".";
+                    break;
                 case "C":
                     txtInput.Text = "";
-                    txtOutput.Text = "";
                     break;
                 case "!":
                     txtInput.Text += " ! ";
@@ -383,10 +393,9 @@ namespace Calculator
 
         private void btnEquals_Click(object sender, EventArgs e)
         {
-            double result = 0.0;
+            equalsButtonPressed = true;
 
-            // clear text field
-            txtOutput.Text = "";
+            double result = 0.0;
 
             string inputString = txtInput.Text;
             //string inputString = "2 +  (  - 5 ) ";
@@ -418,21 +427,21 @@ namespace Calculator
                 CalculateParentheses(splitArray);
 
                 // Do division and multiplication
-                result = DoDivisionAndMultiplication(splitArray, result);
+                DoDivisionAndMultiplication(splitArray, result);
 
                 // Do addition and subtraction
-                result = DoAdditionAndSubtraction(splitArray, result);
+                DoAdditionAndSubtraction(splitArray, result);
 
                 // Output result of calculation
-                txtOutput.Text = result.ToString();
+                txtInput.Text += " = " + splitArray[0];
             }
             catch (System.DivideByZeroException ex)
             {
-                txtOutput.Text = "Cannot perform division by 0.";
+                txtInput.Text = "Cannot perform division by 0.";
             }
             catch (InvalidNumberOfParensException ex)
             {
-                txtOutput.Text = ex.Message;
+                txtInput.Text = ex.Message;
             }
             catch (System.FormatException ex)
             {
@@ -441,7 +450,7 @@ namespace Calculator
             }
             catch (MultipleConsecutiveOperatorsDetectedException ex)
             {
-                txtOutput.Text = ex.Message;
+                txtInput.Text = ex.Message;
             }
         }
     }
