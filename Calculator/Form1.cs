@@ -438,8 +438,15 @@ namespace Calculator
                  */
                 if (!equalsButtonPressed) 
                 {
-                    // Output result of calculation
-                    txtInput.Text += " = " + splitArray[0];
+                    /* This if-statement is needed in case the user hasn't provided any
+                     * numbers to be calculated
+                     */
+                    if (splitArray.Count > 0)
+                    {
+                        // Output result of calculation
+                        txtInput.Text += " = " + splitArray[0];
+                    }
+                    
                 }
 
                 equalsButtonPressed = true;
