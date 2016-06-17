@@ -393,7 +393,7 @@ namespace Calculator
 
         private void btnEquals_Click(object sender, EventArgs e)
         {
-            equalsButtonPressed = true;
+            
 
             double result = 0.0;
 
@@ -432,8 +432,18 @@ namespace Calculator
                 // Do addition and subtraction
                 DoAdditionAndSubtraction(splitArray, result);
 
-                // Output result of calculation
-                txtInput.Text += " = " + splitArray[0];
+                /*
+                 *  Only display result if this is the first time the equals button has been pressed
+                 *   after a calculation has been done
+                 */
+                if (!equalsButtonPressed) 
+                {
+                    // Output result of calculation
+                    txtInput.Text += " = " + splitArray[0];
+                }
+
+                equalsButtonPressed = true;
+
             }
             catch (System.DivideByZeroException ex)
             {
